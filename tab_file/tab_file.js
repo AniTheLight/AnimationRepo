@@ -1,3 +1,11 @@
+const $ = (id) => document.getElementById(id);
+
+const els = {
+  tabImgDK: $('tab-img-dk'),
+  tabImgYK: $('tab-img-yk'),
+  tabImgFK: $('tab-img-fk'),
+};
+
 function setTabHover(name) {
   [
     { el: els.tabImgDK, key: 'DK' },
@@ -11,15 +19,17 @@ function setTabHover(name) {
     }
   });
 }
+
 function wire() {
-  $('btn-incognito').addEventListener('click', () => go('password'));
-  $('btn-tab-dk').addEventListener('click',       () => go('DK'));
-  $('btn-tab-yk').addEventListener('click',       () => go('YK'));
-  $('btn-tab-fk').addEventListener('click',       () => go('FK'));
-  $('btn-tab-dk').addEventListener('mouseenter',  () => setTabHover('DK'));
-  $('btn-tab-yk').addEventListener('mouseenter',  () => setTabHover('YK'));
-  $('btn-tab-fk').addEventListener('mouseenter',  () => setTabHover('FK'));
-  $('btn-tab-dk').addEventListener('mouseleave',  () => setTabHover(null));
-  $('btn-tab-yk').addEventListener('mouseleave',  () => setTabHover(null));
-  $('btn-tab-fk').addEventListener('mouseleave',  () => setTabHover(null));
+  $('btn-tab-dk').addEventListener('click',      () => console.log('DK clicked'));
+  $('btn-tab-yk').addEventListener('click',      () => console.log('YK clicked'));
+  $('btn-tab-fk').addEventListener('click',      () => console.log('FK clicked'));
+  $('btn-tab-dk').addEventListener('mouseenter', () => setTabHover('DK'));
+  $('btn-tab-yk').addEventListener('mouseenter', () => setTabHover('YK'));
+  $('btn-tab-fk').addEventListener('mouseenter', () => setTabHover('FK'));
+  $('btn-tab-dk').addEventListener('mouseleave', () => setTabHover(null));
+  $('btn-tab-yk').addEventListener('mouseleave', () => setTabHover(null));
+  $('btn-tab-fk').addEventListener('mouseleave', () => setTabHover(null));
 }
+
+document.addEventListener('DOMContentLoaded', wire);
