@@ -8,9 +8,9 @@
   transition: transform .3s cubic-bezier(.2,.85,.3,1), filter .3s ease;
   filter: drop-shadow(0 3px 5px rgba(0,0,0,.12));
 }
-.tab-dk { left: 8%;  z-index: 5; }
-.tab-yk { left: 15%; z-index: 4; }
-.tab-fk { left: 22%; z-index: 3; }
+.tab-dk { left: 8%;  z-index: 3; }
+.tab-yk { left: 15%; z-index: 2; }
+.tab-fk { left: 22%; z-index: 1; }
 
 .tab-img.hovered {
   transform: translateY(-13%);
