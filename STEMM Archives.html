@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#f2f2ee">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f2f2ee"/>
+    <path d="M430 250 h150 l36 46 h250 a28 28 0 0 1 28 28 v176 a28 28 0 0 1 -28 28 H430 a28 28 0 0 1 -28 -28 V278 a28 28 0 0 1 28 -28 z" fill="#b8401f" opacity="0.85"/>
+    <path d="M410 278 h150 l36 46 h250 a28 28 0 0 1 28 28 v176 a28 28 0 0 1 -28 28 H410 a28 28 0 0 1 -28 -28 V306 a28 28 0 0 1 28 -28 z" fill="#4a3a8c" opacity="0.9"/>
+    <path d="M390 312 h160 l36 46 h260 a30 30 0 0 1 30 30 v184 a30 30 0 0 1 -30 30 H390 a30 30 0 0 1 -30 -30 V342 a30 30 0 0 1 30 -30 z" fill="#1f5e50"/>
+    <text x="600" y="540" font-family="monospace" font-size="58" fill="#dfeede" text-anchor="middle" letter-spacing="6">STEMM</text>
+  </svg>
+</template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;background:#f2f2ee;overflow-x:hidden;height:auto!important;min-height:100%;}
+  #dc-root,.sc-host{height:auto!important;min-height:100vh!important;}
+</style>
+</helmet>
+<div style="font-family:'Space Mono',monospace;color:#1c241b;min-height:100vh;background:#f2f2ee;display:flex;justify-content:center;">
+  <div style="position:relative;width:100%;max-width:1366px;">
+
+    <!-- ===== HEADER: grid paper + interactive folder ===== -->
+    <div style="position:relative;width:100%;padding-bottom:62%;background:#f2f2ee;background-image:linear-gradient(#c8d6dc 1px,transparent 1px),linear-gradient(90deg,#c8d6dc 1px,transparent 1px);background-size:3.88% 6.26%;overflow:visible;">
+
+      <!-- DK tab (back) -->
+      <img src="tab_dk.png" alt="DK" draggable="false" style="position:absolute;left:8%;bottom:26%;width:60%;height:auto;z-index:5;pointer-events:none;transition:transform .3s cubic-bezier(.2,.85,.3,1),filter .3s ease;transform:{{ dkT }};filter:{{ dkF }};">
+      <!-- YK tab -->
+      <img src="tab_yk.png" alt="YK" draggable="false" style="position:absolute;left:15%;bottom:26%;width:60%;height:auto;z-index:4;pointer-events:none;transition:transform .3s cubic-bezier(.2,.85,.3,1),filter .3s ease;transform:{{ ykT }};filter:{{ ykF }};">
+      <!-- FK tab -->
+      <img src="tab_fk.png" alt="FK" draggable="false" style="position:absolute;left:22%;bottom:26%;width:60%;height:auto;z-index:3;pointer-events:none;transition:transform .3s cubic-bezier(.2,.85,.3,1),filter .3s ease;transform:{{ fkT }};filter:{{ fkF }};">
+      <!-- Front folder face -->
+      <img src="front_folder.png" alt="The STEMM Archives" draggable="false" style="position:absolute;left:20%;bottom:-2%;width:60%;height:auto;z-index:6;pointer-events:none;">
+
+      <!-- Tab hotspots (hover lifts) -->
+      <button onMouseEnter="{{ enterDK }}" onMouseLeave="{{ leaveTab }}" title="DK" style="position:absolute;left:57%;top:2%;width:9%;height:10%;z-index:8;background:transparent;border:0;padding:0;cursor:pointer;"></button>
+      <button onMouseEnter="{{ enterYK }}" onMouseLeave="{{ leaveTab }}" title="YK" style="position:absolute;left:64%;top:2%;width:9%;height:10%;z-index:8;background:transparent;border:0;padding:0;cursor:pointer;"></button>
+      <button onMouseEnter="{{ enterFK }}" onMouseLeave="{{ leaveTab }}" title="FK" style="position:absolute;left:71%;top:2%;width:9%;height:10%;z-index:8;background:transparent;border:0;padding:0;cursor:pointer;"></button>
+    </div>
+
+    <!-- ===== LOWER: main_bg cropped below the folder ===== -->
+    <div style="width:100%;overflow:hidden;position:relative;">
+      <img src="background_img.png" alt="" draggable="false" style="display:block;width:100%;margin-top:-58.5%;">
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { hoveredTab: null };
+  renderVals() {
+    const h = this.state.hoveredTab;
+    const lift = (t) => h === t ? 'translateY(-13%)' : 'translateY(0)';
+    const shadow = (t) => h === t ? 'drop-shadow(0 14px 16px rgba(0,0,0,.28))' : 'drop-shadow(0 3px 5px rgba(0,0,0,.12))';
+    return {
+      dkT: lift('DK'), ykT: lift('YK'), fkT: lift('FK'),
+      dkF: shadow('DK'), ykF: shadow('YK'), fkF: shadow('FK'),
+      enterDK: () => this.setState({ hoveredTab: 'DK' }),
+      enterYK: () => this.setState({ hoveredTab: 'YK' }),
+      enterFK: () => this.setState({ hoveredTab: 'FK' }),
+      leaveTab: () => this.setState({ hoveredTab: null }),
+    };
+  }
+}
+</script>
+</body>
+</html>
