@@ -1,4 +1,4 @@
-<!DOCTYPE html!>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -7,11 +7,20 @@
     <link rel="stylesheet" href="tab_file.css">
   </head>
   <body>
+
+    <!-- Tab images (visual only) -->
     <img id="tab-img-dk" class="tab-img tab-dk" src="uploads/tab_dk.png" alt="DK" draggable="false">
     <img id="tab-img-yk" class="tab-img tab-yk" src="uploads/tab_yk.png" alt="YK" draggable="false">
     <img id="tab-img-fk" class="tab-img tab-fk" src="uploads/tab_fk.png" alt="FK" draggable="false">
 
-    <<!-- Front folder face -->
+    <!-- Front folder face -->
     <img id="folder-front" class="folder-front" src="uploads/folder_front.png" alt="The STEMM Archives" draggable="false">
+
+    <!-- Invisible hotspot buttons layered over each tab ear -->
+    <button id="btn-tab-dk" class="tab-hotspot tab-hotspot-dk" aria-label="Open DK tab"></button>
+    <button id="btn-tab-yk" class="tab-hotspot tab-hotspot-yk" aria-label="Open YK tab"></button>
+    <button id="btn-tab-fk" class="tab-hotspot tab-hotspot-fk" aria-label="Open FK tab"></button>
+
+    <script src="tab_file.js"></script>
   </body>
 </html>
